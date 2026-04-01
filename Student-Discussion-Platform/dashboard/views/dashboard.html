@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="icon" href="../../assets/icon/favicon.png" type="image/png">
+</head>
+
+
+<body>
+    
+    
+    <header class="header">
+        <div class="header-content">
+            
+            <!-- Logo ... -->
+            <div class="left-info">  
+                <img src="../../assets/logo/logo.jpg" alt="Logo" class="header-logo-1">
+            </div> 
+    
+
+            <div class="course-info">
+                Dashboard
+            </div>
+    
+        
+    
+            <!-- 用户信息和注销按钮 -->
+            <div class="user-logout-section">
+                <div id="userDropdown" class="dropdown">
+                    <img src="../../assets/icon/user-fill.png" id="dropdownIcon" class="dropdown-icon">
+                    <div id="dropdownContent" class="dropdown-content">
+                        <!-- 姓名、角色和邮箱将被动态插入这里 -->
+                        <div id="userInfo" class="user-info">
+                            <!-- 动态内容 -->
+                        </div>
+                        <button id="logout-button" class="logout-button">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div style="display: flex; justify-content: center; padding-top: 20px;">
+    <button id="joinCourseBtn" class="joinCourseBtn">Join a Course</button>
+    <button id="createCourseBtn" class="createCourseBtn">Create a Course</button>
+    </div>
+
+
+    <hr>
+
+    <h1 style="padding-left: 20px;">My Courses</h1>
+    <div id="boardsContainer"></div>
+
+
+
+    <div id="joinCourseModal" class="modal" style="display:none;">
+    <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <h2>Enter the invite link to join a course</h2>
+            <input type="text" id="inviteLinkInput" placeholder="Invite Link">
+            <button id="submitInviteLink" class="submit-button">Submit</button>
+            <div id="joinCourseError" class="error-message"></div>
+    
+        </div>
+    </div>
+
+
+    <div id="createCourseModal" class="modal" style="display:none;">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <h2>Enter the course name</h2>
+            <input type="text" id="CoursenameInput" placeholder="Course name">
+            <h2>Enter the semester</h2>
+            <input type="text" id="SemesterInput" placeholder="Semester">
+            <button id="submitcreate" class="submit-button">Submit</button>
+            <div id="createCourseError" class="error-message"></div>
+        
+        </div>
+    </div>
+
+
+    <div id="deleteCourseModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Delete Course</h2>
+            <input type="text" id="course-to-delete" placeholder="Course" required readonly>
+            <button onclick="confirmDeleteCourse()" class="submit-button">Delete Course</button>
+        </div>
+    </div>
+
+
+    <div id="confirmDelete" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirm Delete</h2>
+            <p>Are you sure you want to delete this course?</p>
+            <button onclick="deleteCourse()" class="submit-button">Yes</button>
+            <button onclick="closeConfirmDeleteCourseModal()" class="submit-button">No</button>
+            <div id="deleteCourseError" class="error-message"></div>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+<script src="../static/js/dashboard.js"></script>
+</html>

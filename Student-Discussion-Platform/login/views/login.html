@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link rel="icon" href="../../assets/icon/favicon.png" type="image/png">
+</head>
+<body>
+
+<div class="red-rim"></div>
+<div class="container">
+    <div class="image-side">
+        <img src="../../assets/pictures/mcgill_photo2.jpg" alt="background">
+    </div>
+    <div class="form-side">
+        <div class="logos">
+            <img src="../../assets/logo/mcgill_logo.jpg" alt="First Logo" class="logo">
+            <img src="../../assets/logo/logo.jpg" alt="Second Logo" class="logo">
+        </div>
+        <h2>Login</h2>
+
+        <form id="loginForm" action="../../login.php" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div id="emailError" class="error-message"></div>
+
+            <div class="form-group">
+                <label for="psw">Password:</label>
+                <input type="password" id="psw" name="password" placeholder="Password" required>
+            </div>
+
+            <div>
+                <label for="role">Role:</label>
+                <select id="role" name="role">
+                    <option value="student">Student</option>
+                    <option value="professor">Professor</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn" id="login">Login</button>
+                <button type="button" class="btn" id="register" onclick="location.href='register.html'">Register</button>
+            </div>
+
+            <div>
+                <input type="hidden" id="encrypted_email" name="encrypted_email">
+                <input type="hidden" id="encrypted_psw" name="encrypted_psw">
+            </div>
+            <div id="errorMessage" style="display: none; color: red;"></div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script src="../static/js/security.js"></script>
+<script src="../static/js/login.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,897 @@
+/* 主体和布局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+/* 页眉样式 */
+.header {
+    background-color: #8B0000; /*   #4caf50*/
+    color: #fff;
+    text-align: center;
+    padding: 0px 0;
+    position: relative; /* 这是为了绝对定位 logo */
+}
+
+.header-content {
+    display: flex;
+    justify-content: center; /* 以确保内容居中 */
+    align-items: center;
+    font-size: 16px; /* 字体大小 */
+}
+
+#back-icon {
+    font-size: 20px; /* 字体大小 */
+    color: white; /* 图标颜色 */
+    margin: 10px; /* 边距 */
+    padding: 5px; /* 内边距 */
+    border-radius: 5px; /* 圆角边框 */
+    display: inline-block; /* 行内块布局 */
+    transition: background-color 0.3s, color 0.3s; /* 过渡效果 */
+}
+
+#back-icon:hover {
+    background-color: #4caf50; /* 悬停时的背景颜色 */
+    color: white; /* 悬停时的字体颜色 */
+    cursor: pointer; /* 鼠标悬停时的指针样式 */
+}
+
+.left-info, .user-info {
+    flex-basis: 12%; /* 给两侧的元素相同的基础宽度 */
+    text-align: center; /* 文本居中 */
+}
+
+/* Logo 样式 */
+.header-logo-1 {
+    height: 120px; /* Example height, adjust as necessary */
+    width: auto; /* Maintain aspect ratio */
+    vertical-align: middle; /* Aligns the icon vertically */
+    margin-right: 20px; /* Adjust the space on the right side of the logo */
+}
+
+.course-info {
+    font-size: 26px;
+    flex-grow: 1; /* 使课程信息区域占据额外空间 */
+    text-align: center; /* 确保文本在其区域内居中 */
+}
+
+.pin-container {
+    position: relative; /* 确保子元素的绝对定位是相对于此容器 */
+    display: inline-block; /* 让容器适应内容宽度 */
+}
+
+.header-pin-img {
+    cursor: pointer;
+    width: 60px; /* 您可以根据实际情况调整 */
+    height: 60px; /* 您可以根据实际情况调整 */
+    transition: background-color 0.3s; /* 点击时的背景色变化平滑 */
+}
+
+/* 您可能需要调整hover样式以适应图标 */
+.header-pin-img:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 在悬停时添加半透明背景 */
+    border-radius: 5%; /* 添加圆角 */
+}
+
+.pinned-posts-dropdown {
+    display: none; /* 默认不显示 */
+    position: absolute;
+    top: 100%; /* 将下拉框放置在按钮的正下方 */
+    left: 200; /* 从按钮的左侧开始 */
+    right: 0; /* 也从按钮的右侧开始，确保不超过屏幕边界 */
+    min-width: 50vw; /* 下拉框的最小宽度至少为视口宽度的一半 */
+    max-width: calc(100% - 60px); /* 假设按钮宽度为60px，下拉框的最大宽度为视口宽度减去按钮宽度 */
+    width: auto; /* 宽度自动适应内容 */
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; /* 确保下拉框在其他元素上方 */
+    max-height: 50vh; /* 设置最大高度为视口高度的50% */
+    overflow-y: auto; /* 内容超出时显示垂直滚动条 */
+}
+
+
+.pinned-posts-dropdown.show {
+    display: block; /* 显示下拉框 */
+}
+
+/* 样式调整可能需要根据实际元素进行 */
+.pinned-posts-dropdown p {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; /* 确保每个选项都是块级元素 */
+}
+
+.pinned-posts-dropdown .pinned-post {
+    color: black; /* 将所有文本设置为黑色 */
+}
+
+.pinned-posts-dropdown .pinned-post {
+    /* ... 其他样式 ... */
+    border: 1px solid #ccc; /* 添加灰色边框 */
+    margin: 10px 5px; /* 每个帖子之间添加一些间隔 */
+    padding: 10px; /* 内部填充 */
+    background-color: #fff; /* 设置背景色为白色 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 可选：添加轻微的阴影 */
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-icon {
+    cursor: pointer;
+    width: 60px; /* 调整为所需宽度 */
+    height: 60px; /* 调整为所需高度 */
+    transition: background-color 0.3s; /* 添加过渡效果使颜色变化平滑 */
+}
+
+.dropdown-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 在悬停时添加半透明背景 */
+    border-radius: 5%; /* 可选：添加圆角 */
+    /* 如果您的图标是内联元素，如 <img>，可能需要设置行内块显示以正确应用圆角和填充 */
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content div, .dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content button {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: right;
+}
+
+/* 隐藏的类，可以在JavaScript中切换 */
+.hidden {
+    display: none;
+}
+
+/* 显示下拉内容的类 */
+.show {
+    display: block;
+}
+
+.user-info {
+    text-align: right; /* 右对齐文本 */
+    margin-bottom: 0; /* Remove margin at the bottom */
+    padding-bottom: 0; /* Remove padding at the bottom */
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    margin: 0; /* 根据需要调整上下边距 */
+    background: rgba(128, 128, 128, 0.5); /* 半透明的灰色 */
+}
+
+
+.logout-button {
+    background-color: #4caf50; /* 按钮背景颜色 */
+    color: white; /* 文字颜色 */
+    border: none; /* 无边框 */
+    padding: 8px 10px; /* Adjust padding to change size */
+    align-self: center; /* Align button vertically in flex container */
+    margin-top: 10px; /* Add some space between the user info and button */
+    text-align: center; /* 文字居中 */
+    text-decoration: none; /* 无文本装饰 */
+    display: inline-block; /* 行内块元素 */
+    font-size: 16px; /* 字体大小 */
+    margin: 4px 2px; /* 外边距 */
+    cursor: pointer; /* 鼠标指针变为手形 */
+    border-radius: 5px; /* 圆角边框 */
+    text-align: center;
+}
+
+.user-logout-section {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: flex-start; /* 从左侧开始排列 */
+    padding: 10px; /* 根据需要调整内边距 */
+    text-align: center;
+}
+
+
+.logout-button:hover {
+    background-color: #45a049; /* 悬停时的背景颜色 */
+}
+
+.pin-container {
+    /* Align the container with the logout button as needed */
+    margin-right: auto; /* Adjust if needed */
+    display: flex;
+    align-items: center; /* Vertically center the pin */
+    padding-right: 25px; /* Space before the logout button */
+}
+
+.header-pin-img {
+    width: 60px; /* 调整为所需的宽度 */
+    height: 60px; /* 调整为所需的高度 */
+    background: transparent;
+    border: none;
+    color: white; /* Set pin icon color to white */
+    cursor: pointer;
+}
+
+.header-pin-img:hover {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background on hover */
+    border-radius: 5%; /* Optional: Adds rounded corners to the hover box */
+}
+
+
+
+
+
+
+
+
+
+/* 侧边栏样式 */
+.sidebar {
+    min-width: 15%;
+    background: #333;
+    color: #fff;
+    float: left;
+    min-height: 100vh; /* 最小高度设置为视口高度 */
+    height: auto; /* 高度自适应内容 */
+    padding: 20px;
+    
+}
+
+
+/* "Text Channels" 下拉箭头和选项 */
+.text-channels-header, .members-header {
+    position: relative;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.text-channels:hover + .dropdown-arrow,
+.members-title:hover + .dropdown-arrow,
+.dropdown-arrow:hover {
+    display: inline-block;
+}
+
+.dropdown-arrow {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    padding: 0px;
+    font-size: 28px;
+}
+
+.text-channel-options, .member-options {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    top: 100%; /* 下移，使其位于触发元素正下方 */
+    left: 100%; /* 左移，确保与触发元素的右边缘对齐 */
+    width: 150px; /* 或任何适合您设计的宽度 */
+    z-index: 2000;
+    overflow: hidden;
+}
+
+.text-channel-options p, .member-options p {
+    padding: 5px 10px;
+    margin: 0;
+    z-index: 2100;
+}
+
+
+/* 新增的通用悬停显示样式 */
+.hover-show-options:hover .options {
+    display: block;
+}
+
+/* 频道和成员样式 */
+.channel, .member {
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+    max-height: 50vh; /* 设置最大高度为视口高度的50% */
+    overflow-y: auto; /* 内容超出时显示垂直滚动条 */
+}
+
+/* 频道和成员选项样式 */
+.options {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* 修改后的频道样式 */
+.channel {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* 频道名字悬停样式 */
+.channel-name:hover {
+    background: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    border-radius: 5px; /* 圆角边框 */
+}
+
+
+
+
+
+.member-info {
+    display: flex;
+    align-items: center; /* 确保姓名和图标在同一行对齐 */
+    justify-content: space-between; /* 使姓名靠左，图标靠右 */
+    background: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    padding: 5px 10px; /* 添加一些内边距 */
+    border-radius: 10px; /* 如果需要圆角的话 */
+    margin-bottom: 10px; /* 添加成员之间的间距 */
+}
+
+.add-icon {
+    cursor: pointer;
+    width: 16px; /* 设置图标大小 */
+    height: 16px; /* 设置图标大小 */
+}
+
+.delete-icon {
+    cursor: pointer;
+    width: 16px; /* 设置图标大小 */
+    height: 16px; /* 设置图标大小 */
+    filter: invert(100%); /* 将图标颜色反转为白色 */
+}
+
+/* 成员信息悬停样式 */
+.member-info:hover {
+    background: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    border-radius: 5px; /* 圆角边框 */
+}
+
+
+/* 频道名字样式 */
+.channel-name {
+    white-space: nowrap; /* 防止名字分行 */
+    overflow: hidden; /* 内容太长时隐藏 */
+    text-overflow: ellipsis; /* 显示省略号 */
+    margin-right: 10px; /* 保持与其他元素的间距 */
+}
+
+
+
+
+/* 修改后的频道样式 */
+.channel p {
+    display: block; /* 确保 <p> 标签是块级元素 */
+    white-space: nowrap; /* 防止名字分开 */
+    overflow: hidden; /* 避免内容溢出侧边栏 */
+    text-overflow: ellipsis; /* 如果文本太长，显示省略号 */
+    margin-bottom: 5px; /* 在频道名称之间添加一些间距 */
+}
+
+/* .channel是应用在容器上，确保它允许内容自然流动 */
+#channels-container {
+    display: block; 
+}
+
+/* 成员信息样式 */
+.member-info {
+    display: flex; /* 使用flex布局 */
+    align-items: center; /* 垂直居中 */
+    padding: 5px 10px;
+    margin-bottom: 5px; /* 在成员信息之间添加一些间距 */
+    background-color: transparent; /* 移除背景色 */
+    border-radius: 5px; /* 如果需要圆角则保留，否则移除 */
+}
+
+.member-role {
+    flex: none; /* 防止身份标签伸缩 */
+    margin-right: 10px; /* 在身份和名字之间添加一些间距 */
+}
+
+/* 成员名字的样式，在 <p> 标签中 */
+.member-name {
+    flex-grow: 1; /* 名字可以伸缩以填充剩余空间 */
+    white-space: nowrap; /* 防止名字分行 */
+    overflow: hidden; /* 内容太长时隐藏 */
+    text-overflow: ellipsis; /* 显示省略号 */
+}
+
+
+
+
+
+/* 主内容区样式 */
+.content {
+    flex-grow: 1; /* 允许内容区域伸缩填充剩余空间 */
+    padding: 20px;
+    margin-bottom: 40px;
+    margin-right: 20px;
+}
+
+.pin-button {
+    background: transparent; /* No background */
+    border: none; /* No border */
+    padding: 5px; /* Smaller padding */
+    cursor: pointer;
+    transition: opacity 0.3s; /* Smooth transition for opacity */
+}
+
+.pin-button:hover {
+    opacity: 0.8; /* Less transparency on hover */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+/* 消息框样式 */
+.message {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    min-width: 100%;
+}
+
+/* 用户头像样式 */
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin-right: 10px;
+}
+
+#announcement-channel {
+    cursor: pointer; /* 鼠标悬浮时变成手指形状 */
+    font-size: 23px; /* 增加字体大小 */
+    margin: 20px 0; /* 增加上下间隔 */
+    padding: 10px 0; /* 内部上下填充 */
+    transition: font-size 0.3s ease; /* 平滑过渡效果 */
+}
+
+
+
+#rename-actions {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#rename-actions button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #8B0000; /* 可以根据需要修改颜色 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#rename-actions button:hover {
+    background-color: #700000;
+}
+
+
+/* 输入区域样式 */
+.input-area {
+    display: flex;
+    position: fixed; /* 固定位置 */
+    bottom: 0; /* 底部对齐 */
+    left: calc(15% + 40px); /* 假设侧边栏宽度为视口的15%，加1像素是为了避免任何舍入误差 */
+    right: 0;
+    margin-top: 10px;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+
+
+/* 输入框样式 */
+.input-box {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+/* 发送按钮样式 */
+.send-button {
+    background-color: #8B0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.send-button:hover {
+    cursor: pointer;
+    background-color: #700000; /* 深红色 - 暗一些 */
+}
+
+/* 模态框（背景） */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 保持在屏幕中间 */
+    z-index: 1; /* 坐在页面内容上面 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 全宽 */
+    height: 100%; /* 全高 */
+    overflow: auto; /* 启用滚动条 */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* 背景蒙版 */
+}
+
+/* 模态框内容 */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% 从顶部和中间 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* 可以根据需要设置宽度 */
+    z-index: 1500;
+}
+
+/* 关闭按钮 */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 表单样式 */
+#add-member-form input[type=email],
+#add-member-form select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* 删除成员模态框内的输入框样式 */
+#delete-member-modal input[type=email] {
+    width: 100%; /* 输入框宽度填满父容器 */
+    padding: 12px 20px; /* 内部填充 */
+    margin: 8px 0; /* 外部间距 */
+    display: inline-block; /* 行内块级元素 */
+    border: 1px solid #ccc; /* 边框样式 */
+    border-radius: 4px; /* 边框圆角 */
+    box-sizing: border-box; /* 盒模型 */
+}
+
+/* 模态框内的输入框样式 */
+.modal-content input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* 模态框内的输入框样式 */
+.modal-content input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: #8B0000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+    background-color: #700000;
+}
+
+
+
+.hamburger-menu {
+    display: none; /* 默认隐藏 */
+}
+
+
+.sidebar.active {
+    display: block; /* 当汉堡菜单被点击时显示侧边栏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; /* 或您希望的宽度 */
+    height: 100%;
+    /* 其他样式根据需要添加 */
+}
+
+@media screen and (max-width: 1260px) {
+
+    
+    .message {
+        overflow-wrap: break-word; /* 确保长单词或URL可以被断开换行 */
+        word-break: break-word; /* 允许在任意字符间断行 */
+        white-space: normal; /* 允许内容自然换行 */
+    }
+
+    
+    .text-channel-options, .member-options {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        top: 100%; /* 下移，使其位于触发元素正下方 */
+        left: 45%; /* 左移，确保与触发元素的右边缘对齐 */
+        width: 150px; /* 或任何适合您设计的宽度 */
+        z-index: 2000;
+        overflow: hidden;
+    }
+
+    .header{
+        min-height: 65px;
+    }
+
+    .left-info {
+        display: none; /* 隐藏logo */
+    }
+
+    .course-info {
+        display: flex; /* 使用 flex 布局来排列文本 */
+        flex-direction: row; /* 使内容在同一行显示 */
+        align-items: center; /* 居中对齐 */
+        justify-content: center; /* 使内容水平居中 */
+    }
+
+    .course-info p {
+        margin: 0 5px; /* 添加一些边距，避免文字挤在一起 */
+        font-size: 30px; /* 设置文字大小为30px */
+    }
+
+    .header-pin-img,
+    .dropdown-icon {
+        width: 50px; /* 设置图标宽度为50px */
+        height: 50px; /* 设置图标高度为50px */
+        /* 请根据实际使用的图标元素进行调整，如果是背景图，需要调整 background-size */
+    }
+
+    .sidebar {
+        display: none; /* 隐藏侧边栏 */
+    }
+
+    /* 显示汉堡菜单并定位在 sidebar 原本的位置 */
+    .hamburger-menu {
+        display: block; /* 显示汉堡菜单图标 */
+        position: fixed; /* 固定位置 */
+        z-index: 1050; /* 确保高于其他元素 */
+        cursor: pointer; /* 鼠标悬停时显示手形图标 */
+        font-size: 32px; /* 根据需要调整图标大小 */
+        color: #e76d6d; /* 根据需要调整图标颜色 */
+        /* background-color: #8B0000; 红色背景 
+        border: 1px;
+        border: black;
+        text-align: center; 
+        width: 42px; /* 正方形的宽度 
+        height: 42px; 正方形的高度 */
+        
+    }
+
+    /* 当 sidebar.active 类被添加时，显示 sidebar 作为下拉菜单 */
+    .sidebar.active {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px; /* 您可以根据需要调整宽度 */
+        height: 100%;
+        overflow-y: auto; /* 如果内容超过屏幕高度，显示滚动条 */
+        /* 在这里，您可以添加更多样式以定义响应式状态下 sidebar 的外观和行为 */
+    }
+
+    .input-area {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%; /* 占据整个屏幕宽度 */
+        z-index: 100;
+        margin-top: 10px;
+        background-color: #f4f4f4;
+        padding-right: 50px;
+        border-top: 1px solid #ddd;
+        padding: 10px;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    .send-button {
+        margin-right: 20px; /* 保持按钮右边的间距 */
+    }
+
+    /* 模态框最上层 */
+    .modal {
+        z-index: 3000;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .message {
+        overflow-wrap: break-word; /* 确保长单词或URL可以被断开换行 */
+        word-break: break-word; /* 允许在任意字符间断行 */
+        white-space: normal; /* 允许内容自然换行 */
+    }
+
+    .text-channel-options, .member-options {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        top: 100%; /* 下移，使其位于触发元素正下方 */
+        left: 45%; /* 左移，确保与触发元素的右边缘对齐 */
+        width: 150px; /* 或任何适合您设计的宽度 */
+        z-index: 2000;
+        overflow: hidden;
+    }
+
+    .header{
+        min-height: 65px;
+    }
+
+    .left-info {
+        display: none; /* 隐藏logo */
+    }
+
+    #back-icon {
+        font-size: 20px;
+        color: white;
+        margin: 10px;
+        margin-top: 23px;
+        padding: 0px;
+        border-radius: 5px;
+        display: inline-block;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .course-info {
+        display: flex; /* 使用 flex 布局来排列文本 */
+        flex-direction: row; /* 使内容在同一行显示 */
+        align-items: center; /* 居中对齐 */
+        justify-content: center; /* 使内容水平居中 */
+    }
+
+    .course-info p {
+        margin: 0 5px; /* 添加一些边距，避免文字挤在一起 */
+        margin-top: 10px;
+        font-size: 20px; /* 设置文字大小为20px */
+    }
+
+    .header-pin-img,
+    .dropdown-icon {
+        margin-top: 10px;
+        width: 30px; /* 设置图标宽度为30px */
+        height: 30px; /* 设置图标高度为30px */
+        /* 请根据实际使用的图标元素进行调整，如果是背景图，需要调整 background-size */
+    }
+
+    .sidebar {
+        display: none; /* 隐藏侧边栏 */
+    }
+
+    /* 显示汉堡菜单并定位在 sidebar 原本的位置 */
+    .hamburger-menu {
+        display: block; /* 显示汉堡菜单图标 */
+        position: fixed; /* 固定位置 */
+        z-index: 1050; /* 确保高于其他元素 */
+        cursor: pointer; /* 鼠标悬停时显示手形图标 */
+        font-size: 28px; /* 根据需要调整图标大小 */
+        color: #e76d6d; /* 根据需要调整图标颜色 */
+        /* 在这里，您可以添加更多样式以定义响应式状态下汉堡菜单的外观和行为 */
+        
+    }
+
+    /* 当 sidebar.active 类被添加时，显示 sidebar 作为下拉菜单 */
+    .sidebar.active {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px; /* 您可以根据需要调整宽度 */
+        height: 100%;
+        overflow-y: auto; /* 如果内容超过屏幕高度，显示滚动条 */
+        z-index: 1049; /* 确保 sidebar 在汉堡菜单图标下方 */
+        /* 在这里，您可以添加更多样式以定义响应式状态下 sidebar 的外观和行为 */
+    }
+
+    .input-area {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%; /* 占据整个屏幕宽度 */
+        z-index: 100;
+        margin-top: 10px;
+        background-color: #f4f4f4;
+        padding-right: 50px;
+        border-top: 1px solid #ddd;
+        padding: 10px;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    .send-button {
+        margin-right: 20px; /* 保持按钮右边的间距 */
+    }
+
+    /* 模态框最上层 */
+    .modal {
+        z-index: 3000;
+    }
+}
+
+.error-message {
+    color: red; /* 错误消息的颜色 */
+    margin-top: 10px; /* 在消息和输入框之间添加一些空间 */
+}

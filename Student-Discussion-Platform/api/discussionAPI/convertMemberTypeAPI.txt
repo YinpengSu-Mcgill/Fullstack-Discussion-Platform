@@ -1,0 +1,8 @@
+{
+    state,
+    error_message
+}
+
+POST: {
+    email
+}

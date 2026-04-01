@@ -1,0 +1,8 @@
+{
+    success / fail,
+    error_message:
+}
+
+POST: {
+    channelName:
+}

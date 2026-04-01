@@ -1,0 +1,17 @@
+{
+    state,
+    error_message,
+    posts: [{
+                post_id,
+                content,
+            	post_time,
+            	channel_name,
+            	first_name,
+                last_name,
+                PIN
+            }]
+}
+
+POST: {
+    channel_name
+}

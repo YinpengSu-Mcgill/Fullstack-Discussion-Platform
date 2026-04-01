@@ -1,0 +1,15 @@
+{
+    success / fail
+    error_message,
+    course_info : {
+        id,
+        course_name,
+        semester,
+    }
+}
+
+
+
+
+
+POST: invite_code

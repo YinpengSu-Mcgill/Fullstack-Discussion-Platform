@@ -1,0 +1,432 @@
+
+/* 主体和布局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+
+
+/* 页眉样式 */
+.header {
+    background-color: #8B0000; /*   #4caf50*/
+    color: #fff;
+    text-align: center;
+    padding: 0px 0;
+    position: relative; /* 这是为了绝对定位 logo */
+    height: 140px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center; /* Vertically centers the flex items */
+    justify-content: space-between; /* Spreads out the flex items */
+}
+
+
+#back-icon {
+    font-size: 20px; /* 字体大小 */
+    color: white; /* 图标颜色 */
+    margin: 10px; /* 边距 */
+    padding: 5px; /* 内边距 */
+    border-radius: 5px; /* 圆角边框 */
+    display: inline-block; /* 行内块布局 */
+    transition: background-color 0.3s, color 0.3s; /* 过渡效果 */
+}
+
+#back-icon:hover {
+    background-color: #4caf50; /* 悬停时的背景颜色 */
+    color: white; /* 悬停时的字体颜色 */
+    cursor: pointer; /* 鼠标悬停时的指针样式 */
+}
+
+.left-info, .user-info {
+    flex-basis: 12%; /* 给两侧的元素相同的基础宽度 */
+    text-align: center; /* 文本居中 */
+    padding: 10px;
+}
+
+/* Logo 样式 */
+
+.header-logo-1 {
+    height: 120px; /* Example height, adjust as necessary */
+    width: auto; /* Maintain aspect ratio */
+    vertical-align: middle; /* Aligns the icon vertically */
+    margin-right: 20px; /* Adjust the space on the right side of the logo */
+}
+
+
+.header-logo-2 {
+    position: absolute;
+    left: 220px; /* 距离左边缘220px */
+    top: 50%;
+    transform: translateY(-50%); /* 垂直居中 */
+    max-height: 7vw; /* 最大高度根据视口宽度变化 */
+    width: auto;
+}
+
+.course-info {
+    font-size: 26px;
+    flex-grow: 1; /* 使课程信息区域占据额外空间 */
+    text-align: center; /* 确保文本在其区域内居中 */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    text-align: right;
+}
+
+.dropdown-icon {
+    cursor: pointer;
+    width: 60px; /* 调整为所需宽度 */
+    height: 60px; /* 调整为所需高度 */
+    transition: background-color 0.3s; /* 添加过渡效果使颜色变化平滑 */
+    text-align: right;
+}
+
+.dropdown-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 在悬停时添加半透明背景 */
+    border-radius: 5%; /* 可选：添加圆角 */
+    /* 如果您的图标是内联元素，如 <img>，可能需要设置行内块显示以正确应用圆角和填充 */
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content div, .dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content button {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: right;
+}
+
+/* 隐藏的类，可以在JavaScript中切换 */
+.hidden {
+    display: none;
+}
+
+/* 显示下拉内容的类 */
+.show {
+    display: block;
+}
+
+.user-info {
+    text-align: right; /* 右对齐文本 */
+    margin-bottom: 0; /* Remove margin at the bottom */
+    padding-bottom: 0; /* Remove padding at the bottom */
+}
+
+.logout-button {
+    background-color: #4caf50; /* 按钮背景颜色 */
+    color: white; /* 文字颜色 */
+    border: none; /* 无边框 */
+    padding: 8px 10px; /* Adjust padding to change size */
+    margin-top: 10px; /* Add some space between the user info and button */
+    text-align: center; /* 文字居中 */
+    text-decoration: none; /* 无文本装饰 */
+    display: inline-block; /* 行内块元素 */
+    font-size: 16px; /* 字体大小 */
+    margin: 4px 2px; /* 外边距 */
+    cursor: pointer; /* 鼠标指针变为手形 */
+    border-radius: 5px; /* 圆角边框 */
+    margin-left: auto
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    margin: 0; /* 根据需要调整上下边距 */
+    background: rgba(128, 128, 128, 0.5); /* 半透明的灰色 */
+}
+
+.user-logout-section {
+    flex-basis: 13%;
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    padding: 10px; /* 根据需要调整内边距 */
+}
+
+
+.logout-button:hover {
+    background-color: #45a049; /* 悬停时的背景颜色 */
+}
+
+.pin-container {
+    /* Align the container with the logout button as needed */
+    margin-right: auto; /* Adjust if needed */
+    display: flex;
+    align-items: center; /* Vertically center the pin */
+    padding-right: 25px; /* Space before the logout button */
+}
+
+.header-pin-img {
+    width: 60px; /* 调整为所需的宽度 */
+    height: 60px; /* 调整为所需的高度 */
+    background: transparent;
+    border: none;
+    color: white; /* Set pin icon color to white */
+    cursor: pointer;
+}
+
+.header-pin-img:hover {
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 5%; 
+}
+
+
+
+
+.board-info {
+    background-color: #ffffff; 
+    border-radius: 25px; 
+    padding: 15px; 
+    margin-bottom: 10px; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    margin: 10px;
+    border: 1px solid #8B0000;
+    position: relative;
+    min-height: 65px;
+}
+
+
+.board-info:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    background: linear-gradient(to left, #EEEEEE,#D72323,#3A4750, #303841); /* Example gradient */
+    border-radius: 25px; 
+    padding: 3px;
+}
+
+.board-info:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: translateY(-2px); 
+    color: white;
+}
+
+.board-info p {
+    margin: 0; 
+    color: #333; 
+    font-size: 16px; 
+}
+
+
+.board-info img {
+    width: 30px; 
+    margin-right: 10px; 
+}
+
+
+
+.joinCourseBtn {
+    background-color: #8B0000;
+    color: rgb(255, 255, 255); 
+    padding: 15px 32px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border: none; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition-duration: 0.4s;
+    margin-right: 10px;
+}
+
+.joinCourseBtn:hover {
+    background-color: #700000; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}
+
+.joinCourseBtn:active {
+    background-color: #700000; 
+    box-shadow: 0 5px rgba(0,0,0,0.2); 
+    transform: translateY(4px);
+}
+
+.createCourseBtn {
+    background-color: #8B0000;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px; 
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border: none; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+    transition-duration: 0.4s;
+    margin-right: 10px;
+    
+
+}
+
+.createCourseBtn:hover {
+    background-color: #700000; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); 
+}
+
+.createCourseBtn:active {
+    background-color: #700000; 
+    box-shadow: 0 5px rgba(0,0,0,0.2); 
+    transform: translateY(4px);
+}
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 保持在屏幕中间 */
+    z-index: 1; /* 坐在页面内容上面 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 全宽 */
+    height: 100%; /* 全高 */
+    overflow: auto; /* 启用滚动条 */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* 背景蒙版 */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% 从顶部和中间 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* 可以根据需要设置宽度 */
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.error-message {
+    color: red;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: #8B0000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+    background-color: #700000;
+}
+
+
+
+#inviteLinkInput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#CoursenameInput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#SemesterInput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.delete-board-btn {
+    background-image: url('../../assets/icon/delete_circle.png'); 
+    background-size: cover;
+    width: 30px; 
+    height: 30px; 
+    border: none;
+    cursor: pointer;
+    box-shadow: none; 
+    outline: none; 
+    background-color: transparent;
+    margin-right: 20px;
+
+}
+
+
+.delete-board-btn:hover {
+    background-image: url('../../assets/icon/delete_circle_red.png'); 
+}
+
+
+#course-to-delete {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #991919; /* Change the color as needed */
+    margin-top: 10px; /* Adjust spacing as needed */
+    margin-bottom: 10px; /* Adjust spacing as needed */
+}

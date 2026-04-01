@@ -1,0 +1,11 @@
+{
+	state: success / fail
+	error_message: 
+	post_id:
+	parent_id:
+}
+
+
+time
+channel_name
+text_contents

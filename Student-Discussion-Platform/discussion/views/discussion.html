@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Board</title>
+    <link rel="stylesheet" href="../static/css/discussion.css">
+    <link rel="icon" href="../../assets/icon/favicon.png" type="image/png">
+    <!-- Add this line in the <head> section of your HTML to include Font Awesome -->
+</head>
+
+<body>
+    <!-- 页眉 -->
+    <div class="header">
+        <div class="header-content">
+             
+            <span id="back-icon" style="cursor: pointer;">&#8592; Back</span>
+            <!-- Logo ... -->
+            <div class="left-info">  
+                <img src="../../assets/logo/logo.jpg" alt="Logo" class="header-logo-1">
+            </div> 
+    
+            <div id="courseInfo" class="course-info">
+                <!-- 课程名和学期将被动态插入这里 -->
+            </div>
+    
+            <div class="pin-container">
+                <img src="../../assets/icon/header-pin.png" alt="Pin" class="header-pin-img" id="headerPinButton">
+                <div id="pinnedPostsDropdown" class="pinned-posts-dropdown hidden">
+                    <!-- 动态生成的固定消息将在这里显示 -->
+                    <p> UnPin anything yet </p>
+                </div>
+            </div>
+            
+            
+    
+            <!-- 用户信息和注销按钮 -->
+            <div class="user-logout-section">
+                <div id="userDropdown" class="dropdown">
+                    <img src="../../assets/icon/user-fill.png" id="dropdownIcon" class="dropdown-icon">
+                    <div id="dropdownContent" class="dropdown-content">
+                        <!-- 姓名、角色和邮箱将被动态插入这里 -->
+                        <div id="userInfo" class="user-info">
+                            <!-- 动态内容 -->
+                        </div>
+                        <button id="logout-button" class="logout-button">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            
+            <!-- 固定 Announcements 频道-->
+            <div id="announcement-channel" class="channel-name">
+                Announcements
+            </div>
+
+            <!-- "Text Channels" 标题和下拉箭头-->
+            <div class="text-channels-header">
+                <h2 class="text-channels">Text Channels</h2>
+                <span class="dropdown-arrow">&#9662;</span>
+                <div class="text-channel-options">
+                    <p id="rename-channel-option">Rename Channel</p>
+                    <p id="add-channel-option">Create Channel</p>
+                    <p id="delete-channel-option">Delete Channel</p>
+                </div>
+            </div>
+
+            <div  id="channels-container"  class="channel">
+                <!-- 频道列表动态加载 -->
+            </div>
+
+            <div id="rename-actions" style="display: none;">
+                <button id="confirm-rename">Confirm Rename</button>
+                <button id="cancel-rename">Cancel</button>
+            </div>
+            <br>
+
+            <!-- "Members" 标题和下拉箭头 -->
+            <div class="members-header">
+                <h2 class="members-title">Members</h2>
+                <span class="dropdown-arrow">&#9662;</span>
+                <div class="member-options">
+                    <p >Invite</p>
+                    <p id="add-member-option">Add</p>
+                </div>
+            </div>
+
+            <div> <h3> Professor </h3></div>
+            <div id="Professor-container" class="member">
+                <!-- 成员列表动态加载 -->
+            </div>
+
+            <br>
+
+            <div> <h3> TAs </h3></div>
+            <div id="TAs-container" class="member">
+                <!-- 成员列表动态加载 -->
+            </div>
+
+            <br>
+
+            <div> <h3> Students </h3></div>
+            <div id="Students-container" class="member">
+                <!-- 成员列表动态加载 -->
+            </div>
+
+        </div>
+
+        <!-- 添加在 sidebar 外部，但在响应式布局中会固定在顶部 -->
+        <div class="hamburger-menu" onclick="toggleSidebar()">☰</div>
+        
+        <div id="content" class="content">
+
+            <h1> Choose a channel to start!</h1>
+
+            <!--频道内容动态加载 -->
+            
+        </div>
+        
+       
+    </div>
+
+    <div id="input-area" class="input-area">
+        <input type="text" id="message-input" class="input-box" placeholder="Type a message...">
+        <button id="send-button-id" class="send-button">Send</button>
+    </div>
+
+    <!-- 添加频道的模态框 -->
+    <div id="add-channel-modal" class="modal">
+        <!-- 模态内容 -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="add-channel-form">
+                <h2>Add Channel</h2>
+                <input type="text" id="new-channel-name" placeholder="Channel Name" required>
+                <div id="channel-add-error" class="error-message"></div> <!-- 用于显示错误消息的元素 -->
+                <button type="submit" class="submit-button">Add Channel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 添加成员的模态框 -->
+    <div id="add-member-modal" class="modal">
+        <!-- 模态内容 -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="add-member-form">
+                <h2>Add Member</h2>
+                <h2>Please only entre the correspond email</h2>
+                <input type="email" id="email" placeholder="Email" required>
+                <div id="add-member-error" class="error-message"></div> <!-- 用于显示错误消息的元素 -->
+                <button type="submit" class="submit-button">Add Member</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 邀请码模态框 -->
+    <div id="invite-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Invitation Code</h1>
+            <p id="invite-code">Loading...</p> <!-- 初始文本动态生成 -->
+        </div>
+    </div>
+
+    <!-- 删除频道模态框 -->
+    <div id="delete-channel-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Delete Channel</h2>
+            <input type="text" id="channel-to-delete" placeholder="Channel Name" required>
+            <div id="delete-channel-error" class="error-message"></div> <!-- 用于显示错误消息的元素 -->
+            <button onclick="confirmDeleteChannel()" class="submit-button">Delete Channel</button>
+        </div>
+    </div>
+
+
+    <!-- 确认删除频道模态框 -->
+    <div id="confirm-delete-channel-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirm Delete</h2>
+            <p>Are you sure you want to delete this channel?</p>
+            <button onclick="deleteChannel()" class="submit-button">Yes</button>
+            <button onclick="closeConfirmDeleteModal()" class="submit-button">No</button>
+        </div>
+    </div>
+
+    <!-- 删除成员模态框 -->
+    <div id="delete-member-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Delete Member</h2>
+            <input type="email" id="email-to-delete" placeholder="Member Email" required readonly>
+            <button onclick="confirmDeleteMember()" class="submit-button">Delete Member</button>
+        </div>
+    </div>
+
+    <!-- 确认删除成员模态框 -->
+    <div id="confirm-delete-member-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirm Delete</h2>
+            <p>Are you sure you want to delete this member?</p>
+            <button onclick="deleteMember()" class="submit-button">Yes</button>
+            <button onclick="closeConfirmDeleteMemberModal()" class="submit-button">No</button>
+        </div>
+    </div>
+
+    <!-- 确认删除频道内信息模态框 -->
+    <div id="confirm-delete-post-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirm Delete</h2>
+            <p>Are you sure you want to delete this post?</p>
+            <button onclick="deletePost()" class="submit-button">Yes</button>
+            <button onclick="closeConfirmDeletePostModal()" class="submit-button">No</button>
+        </div>
+    </div>
+
+
+    <script src="../static/js/discussion.js"></script>
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,6 @@
+DROP TABLE USERS;
+DROP TABLE DiscussionBoards;
+DROP TABLE UserBoardRelations;
+DROP TABLE Channels;
+DROP TABLE POSTS;
+DROP TABLE UserPinPost;
