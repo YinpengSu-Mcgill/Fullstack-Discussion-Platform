@@ -45,4 +45,26 @@ A full-stack web-based discussion platform that enables users to :
 - Post and manage messages
 - Organize communication through channels
 - Frontend-backend interaction through APIs
-- Structured dashboard-based user interface
+- Structured dashboard-based user interfacea
+
+ Demo:
+ register Page
+ <img width="2523" height="1291" alt="image" src="https://github.com/user-attachments/assets/1d1e03e9-46a2-47a0-bb97-7aa7cc61674c" />
+ 
+ login Page
+ <img width="2516" height="1296" alt="image" src="https://github.com/user-attachments/assets/71ba08b4-82e7-4a71-98e3-4f182d7967f7" />
+ 
+ Landing Page
+ <img width="2495" height="1233" alt="image" src="https://github.com/user-attachments/assets/dabca9c4-46b7-4dd1-8b84-400961e079ae" />
+
+ Dashboard Page
+ <img width="2519" height="775" alt="image" src="https://github.com/user-attachments/assets/fc776451-3991-4f0a-8c2a-09ca8db213cc" />
+
+ Discussion Page
+ <img width="2485" height="1264" alt="image" src="https://github.com/user-attachments/assets/cd0e4e95-5172-4991-b9c6-9536a7769d50" />
+
+
+
+
+
+
